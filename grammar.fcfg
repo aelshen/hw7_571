@@ -1,0 +1,157 @@
+TOP -> S
+TOP -> SQ
+TOP -> FRAG
+
+S -> NP VP
+S -> NP VP PUNC
+SQ -> MD NP VP '?'
+FRAG -> NP PUNC
+S -> PP COM S PUNC
+
+VP -> VP ADVP
+VP -> VP Conj VP
+
+
+VP -> VBP NP
+VP -> VB PP
+VP -> VBD NP
+VP -> VBD NP PP
+VP -> VBZ NP
+VP -> AUX VP
+VP -> VBN PP
+VP -> VBZ RP
+VP -> VBN SBAR
+
+SBAR -> 'that' S
+
+ADVP -> Adv
+ADVP -> Adv ADVP
+
+NP[AGR=?a] -> Det Nom[AGR=?a] 
+NP[AGR=?a] -> Nom[AGR=?a]
+NP[AGR=?a] -> PossPro Nom[AGR=?a]
+NP[AGR=?a] -> PRP[AGR=?a]
+
+Nom[AGR=?a] -> ADJP Nom[AGR=?a]
+Nom[AGR=?a] -> Nom[AGR=?a] PP
+Nom[AGR=?a] -> Nom[AGR=?a] Nom[AGR=?a]
+
+
+Nom[AGR=?a] -> NN[AGR=?a]
+Nom[AGR=?a] -> NNS[AGR=?a]
+Nom[AGR=?a] -> NNP[AGR=?a]
+
+ADJP -> Adj ADJP
+ADJP -> Adj 
+
+PP -> Prep NP
+
+AUX -> Aux
+AUX -> AuxZ
+
+
+
+Det -> 'a'
+Det -> 'A'
+Det -> 'the'
+Det -> 'The'
+
+
+PRP[AGR=[NUM='sg', PER=3]] -> 'this'
+PRP[AGR=[NUM='pl', PER=3]] -> 'them'
+PRP[AGR=[NUM='pl', PER=3]] -> 'They'
+
+Prep -> 'In'
+Prep -> 'with'
+Prep -> 'in'
+Prep -> 'of'
+Prep -> 'by' 
+
+PossPro -> 'their' 
+PossPro -> 'Their'
+
+Adv -> 'today'
+Adv -> 'online'
+
+Adj -> 'dendritic'
+Adj -> 'immune'
+Adj -> 'infected'
+Adj -> 'new'
+Adj -> 'Systemic'
+Adj -> 'weak'
+
+Conj -> 'and'
+
+
+NNS[AGR=[NUM='pl', PER=3]] -> 'cells'
+NNS[AGR=[NUM='pl', PER=3]] -> 'fragments'
+NNS[AGR=[NUM='pl', PER=3]] -> 'humans'
+NNS[AGR=[NUM='pl', PER=3]] -> 'infections'
+NNS[AGR=[NUM='pl', PER=3]] -> 'mice'
+NNS[AGR=[NUM='pl', PER=3]] -> 'Scientists'
+
+NN[AGR=[NUM='sg', PER=3]] -> 'body'
+NN[AGR=[NUM='sg', PER=3]] -> 'case'
+NN[AGR=[NUM='sg', PER=3]] -> 'immunity'
+NN[AGR=[NUM='sg', PER=3]] -> 'malaria'
+NN[AGR=[NUM='sg', PER=3]] -> 'mouse' 
+NN[AGR=[NUM='sg', PER=3]] -> 'pathogen'
+NN[AGR=[NUM='sg', PER=3]] -> 'research'
+NN[AGR=[NUM='sg', PER=3]] -> 'researcher'
+NN[AGR=[NUM='sg', PER=3]] -> 'response'
+NN[AGR=[NUM='sg', PER=3]] -> 'sepsis'
+NN[AGR=[NUM='sg', PER=3]] -> 'system'
+NN[AGR=[NUM='sg', PER=3]] -> 'type'
+NN[AGR=[NUM='sg', PER=3]] -> 'vaccine'
+
+NNP -> 'Dr'
+NNP -> 'Jose'
+NNP -> 'Villadangos'
+
+
+
+RP -> 'down'
+
+
+IN -> 'that'
+
+
+Aux -> 'have'
+AuxZ -> 'is'
+AuxZ -> 'was'
+AuxZ -> 'were'
+
+
+
+MD -> 'Will'
+
+VB  -> 'work'
+
+VBP -> 'alert'
+VBP -> 'capture'
+VBP -> 'display'
+VBP -> 'have'
+VBP -> 'overstimulate'
+
+VBD -> 'alerted'
+VBD -> 'injected'
+VBD -> 'published'
+VBD -> 'rescued' 
+VBD -> 'restored'
+VBD -> 'was'
+
+VBN -> 'alerted'
+VBN -> 'compromised'
+VBN  -> 'discovered'
+VBN -> 'made'
+
+VBZ -> 'invades'
+VBZ -> 'is'
+VBZ -> 'shuts'
+
+Adj -> 'whole'
+Adj -> 'live'
+
+COM -> ','
+PUNC -> '?'
+PUNC -> '.'
