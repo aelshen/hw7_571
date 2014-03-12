@@ -14,6 +14,7 @@ import nltk
 #--------------------------------Constants-------------------------------------
 #==============================================================================
 DEBUG = True
+#for convenience's sake, a lookup table for pronouns
 PRONOUNS = ['their', 'Their', 'this', 'them', 'They']
 #==============================================================================
 #-----------------------------------Main---------------------------------------
@@ -61,13 +62,13 @@ def main():
 ##-------------------------------------------------------------------------
 ## HobbsAlgorithm()
 ##-------------------------------------------------------------------------
-##    Description:        description
+##    Description:      description
 ##
 ##    Arguments:        arguments
 ##
-##    Calls:                calls
+##    Calls:            calls
 ##
-##        Returns:            returns
+##    Returns:          returns
 ##-------------------------------------------------------------------------
 def HobbsAlgorithm(sentence_pair, parser, result_file):
     sentence_1 = parser.nbest_parse(sentence_pair[0], 1)
@@ -79,7 +80,7 @@ def HobbsAlgorithm(sentence_pair, parser, result_file):
         sentence_2 = nltk.tree.ParentedTree.convert(sentence_2[0])
         
         candidate_antecedents = []
-        
+        case = None
         for x in sentence_1.subtrees():
             temp = x.node.__repr__()[:2]
             if temp == 'NP':
@@ -87,15 +88,21 @@ def HobbsAlgorithm(sentence_pair, parser, result_file):
                 
                 #x.node returns the FeatStruct for this subtree
                 if parent == 'VP':
-                    candidate_antecedents.append((x,'ACC'))
-                else:
-                    candidate_antecedents.append((x,'NOM'))
+                    case= 'ACC'
+               
+                candidate_antecedents.append((x,case))
         
         #find if the second sentence has any pronouns 
         pro = []
-        for leaf in sentence_2.pos():
-            if leaf[0] in PRONOUNS:
-                pro.append(leaf)
+        case = None
+        
+        for x in sentence_2.subtrees():
+            temp = x.node.__repr__()[:3]
+            #x.node returns the FeatStruct for this subtree
+            if temp[:2] == 'VP':
+                case = 'ACC'
+            if temp == ('PRP' or 'Pos'):
+                pro.append((str(x.leaves()),x.node,case))
         
         result_file.write(sentence_1.flatten().pprint(margin=500) + os.linesep)
         result_file.write(sentence_2.flatten().pprint(margin=500) + os.linesep)
@@ -112,10 +119,16 @@ def HobbsAlgorithm(sentence_pair, parser, result_file):
                 fs_ante = ante[0].node["AGR"]
                 fs_pro = ref[1]["AGR"]
                 
+                case_ante = ante[1]
+                case_pro = ref[2]
+                
                 agreement = fs_pro.unify(fs_ante)
                 
                 if agreement:
-                    result_file.write("Accept" + os.linesep)
+                    if case_ante == case_pro:
+                        result_file.write("Accept - preferred" + os.linesep)
+                    else:
+                        result_file.write("Accept" + os.linesep)
                 else:
                     result_file.write("Reject" + os.linesep)
                     
@@ -124,26 +137,6 @@ def HobbsAlgorithm(sentence_pair, parser, result_file):
         result_file.write(os.linesep)
     else:
         print("Parse error: there wasn't a valid parse for both sentences")
-
-#==============================================================================    
-#----------------------------------Classes-------------------------------------
-#==============================================================================
-##-------------------------------------------------------------------------
-## Class Classname
-##-------------------------------------------------------------------------
-##    Description:        desciription
-##
-##    Arguments:         arguments
-##
-##
-##    Properties:         properties
-##
-##    Calls:                  calls
-##
-##-------------------------------------------------------------------------
-class Classname:
-    def __init__(self):
-        self.x = 0
 
 #==============================================================================    
 #------------------------------------------------------------------------------
