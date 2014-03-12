@@ -9,6 +9,7 @@ from __future__ import print_function
 import os
 import sys
 import nltk
+
 #==============================================================================
 #--------------------------------Constants-------------------------------------
 #==============================================================================
@@ -44,11 +45,11 @@ def main():
         if not sentence.strip():
             continue
         
-        if len(sentence_pair) < 2:
-            sentence_pair.append( nltk.wordpunct_tokenize(sentence) )
-        else:
+        sentence_pair.append( nltk.wordpunct_tokenize(sentence) )
+        
+        if len(sentence_pair) == 2:
             HobbsAlgorithm(sentence_pair, parser, result_file)
-            sentence_pair = [nltk.wordpunct_tokenize(sentence)]
+            sentence_pair = []
 
     
     
