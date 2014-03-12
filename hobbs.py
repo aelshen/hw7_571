@@ -1,6 +1,6 @@
 '''
 #==============================================================================
-hobbs
+hobbs.py
 Created on Mar 17, 2014
 @author: aelshen
 #==============================================================================
@@ -54,7 +54,6 @@ def main():
     
     data_file.close()
     result_file.close()
-    print("Hello, World!")
 #==============================================================================    
 #---------------------------------Functions------------------------------------
 #==============================================================================
@@ -97,14 +96,31 @@ def HobbsAlgorithm(sentence_pair, parser, result_file):
             if leaf[0] in PRONOUNS:
                 pro.append(leaf)
         
-        for ref in pro:
-            s1 = sentence_1.pprint(margin=500)
-            s2 = sentence_2.pprint(margin=500)
-            print(ref[0] + "\t" + s1 + " " + s2)
-            for ante in reversed(candidate_antecedents):
-                print(ante[0].pprint(margin=500))
+        result_file.write(sentence_1.flatten().pprint(margin=500) + os.linesep)
+        result_file.write(sentence_2.flatten().pprint(margin=500) + os.linesep)
         
-        z = 1
+        s1 = sentence_1.pprint(margin=500)
+        s2 = sentence_2.pprint(margin=500)
+        
+        for ref in pro:
+            result_file.write(ref[0] + "\t" + s1 + " " + s2 + os.linesep)
+            for ante in reversed(candidate_antecedents):
+                result_file.write(ante[0].pprint(margin=500) + os.linesep)
+                result_file.write(' '.join(ante[0].leaves()) + os.linesep)
+                
+                fs_ante = ante[0].node["AGR"]
+                fs_pro = ref[1]["AGR"]
+                
+                agreement = fs_pro.unify(fs_ante)
+                
+                if agreement:
+                    result_file.write("Accept" + os.linesep)
+                else:
+                    result_file.write("Reject" + os.linesep)
+                    
+                result_file.write(os.linesep)
+                
+        result_file.write(os.linesep)
     else:
         print("Parse error: there wasn't a valid parse for both sentences")
 

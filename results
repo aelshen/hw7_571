@@ -1,0 +1,91 @@
+(TOP[] Scientists rescued a mouse immune system .)
+(TOP[] They published the research today online .)
+They	(TOP[] (S[] (NP[AGR=[NUM='pl', PER=3]] (Nom[AGR=[NUM='pl', PER=3]] (NNS[AGR=[NUM='pl', PER=3]] Scientists))) (VP[] (VBD[] rescued) (NP[AGR=[NUM='sg', PER=3]] (Det[] a) (Nom[AGR=[NUM='sg', PER=3]] (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] mouse)) (Nom[AGR=[NUM='sg', PER=3]] (ADJP[] (Adj[] immune)) (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] system)))))) (PUNC[] .))) (TOP[] (S[] (NP[AGR=[NUM='pl', PER=3]] (PRP[AGR=[NUM='pl', PER=3]] They)) (VP[] (VP[] (VP[] (VBD[] published) (NP[AGR=[NUM='sg', PER=3]] (Det[] the) (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] research)))) (ADVP[] (Adv[] today))) (ADVP[] (Adv[] online))) (PUNC[] .)))
+(NP[AGR=[NUM='sg', PER=3]] (Det[] a) (Nom[AGR=[NUM='sg', PER=3]] (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] mouse)) (Nom[AGR=[NUM='sg', PER=3]] (ADJP[] (Adj[] immune)) (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] system)))))
+a mouse immune system
+Reject
+
+(NP[AGR=[NUM='pl', PER=3]] (Nom[AGR=[NUM='pl', PER=3]] (NNS[AGR=[NUM='pl', PER=3]] Scientists)))
+Scientists
+Accept
+
+
+(TOP[] The immune response is alerted by dendritic cells .)
+(TOP[] They capture infected cells and display fragments of the pathogen .)
+They	(TOP[] (S[] (NP[AGR=[NUM='sg', PER=3]] (Det[] The) (Nom[AGR=[NUM='sg', PER=3]] (ADJP[] (Adj[] immune)) (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] response)))) (VP[] (AUX[] (AuxZ[] is)) (VP[] (VBN[] alerted) (PP[] (Prep[] by) (NP[AGR=[NUM='pl', PER=3]] (Nom[AGR=[NUM='pl', PER=3]] (ADJP[] (Adj[] dendritic)) (Nom[AGR=[NUM='pl', PER=3]] (NNS[AGR=[NUM='pl', PER=3]] cells))))))) (PUNC[] .))) (TOP[]
+  (S[]
+    (NP[AGR=[NUM='pl', PER=3]] (PRP[AGR=[NUM='pl', PER=3]] They))
+    (VP[] (VP[] (VBP[] capture) (NP[AGR=[NUM='pl', PER=3]] (Nom[AGR=[NUM='pl', PER=3]] (ADJP[] (Adj[] infected)) (Nom[AGR=[NUM='pl', PER=3]] (NNS[AGR=[NUM='pl', PER=3]] cells))))) (Conj[] and) (VP[] (VBP[] display) (NP[AGR=[NUM='pl', PER=3]] (Nom[AGR=[NUM='pl', PER=3]] (Nom[AGR=[NUM='pl', PER=3]] (NNS[AGR=[NUM='pl', PER=3]] fragments)) (PP[] (Prep[] of) (NP[AGR=[NUM='sg', PER=3]] (Det[] the) (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] pathogen))))))))
+    (PUNC[] .)))
+(NP[AGR=[NUM='pl', PER=3]] (Nom[AGR=[NUM='pl', PER=3]] (ADJP[] (Adj[] dendritic)) (Nom[AGR=[NUM='pl', PER=3]] (NNS[AGR=[NUM='pl', PER=3]] cells))))
+dendritic cells
+Accept
+
+(NP[AGR=[NUM='sg', PER=3]] (Det[] The) (Nom[AGR=[NUM='sg', PER=3]] (ADJP[] (Adj[] immune)) (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] response))))
+The immune response
+Reject
+
+
+(TOP[] Scientists rescued a mouse immune system .)
+(TOP[] They restored immunity in mice with a weak immune system .)
+They	(TOP[] (S[] (NP[AGR=[NUM='pl', PER=3]] (Nom[AGR=[NUM='pl', PER=3]] (NNS[AGR=[NUM='pl', PER=3]] Scientists))) (VP[] (VBD[] rescued) (NP[AGR=[NUM='sg', PER=3]] (Det[] a) (Nom[AGR=[NUM='sg', PER=3]] (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] mouse)) (Nom[AGR=[NUM='sg', PER=3]] (ADJP[] (Adj[] immune)) (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] system)))))) (PUNC[] .))) (TOP[]
+  (S[]
+    (NP[AGR=[NUM='pl', PER=3]] (PRP[AGR=[NUM='pl', PER=3]] They))
+    (VP[]
+      (VBD[] restored)
+      (NP[AGR=[NUM='sg', PER=3]] (Nom[AGR=[NUM='sg', PER=3]] (Nom[AGR=[NUM='sg', PER=3]] (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] immunity)) (PP[] (Prep[] in) (NP[AGR=[NUM='pl', PER=3]] (Nom[AGR=[NUM='pl', PER=3]] (NNS[AGR=[NUM='pl', PER=3]] mice))))) (PP[] (Prep[] with) (NP[AGR=[NUM='sg', PER=3]] (Det[] a) (Nom[AGR=[NUM='sg', PER=3]] (ADJP[] (Adj[] weak)) (Nom[AGR=[NUM='sg', PER=3]] (ADJP[] (Adj[] immune)) (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] system)))))))))
+    (PUNC[] .)))
+(NP[AGR=[NUM='sg', PER=3]] (Det[] a) (Nom[AGR=[NUM='sg', PER=3]] (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] mouse)) (Nom[AGR=[NUM='sg', PER=3]] (ADJP[] (Adj[] immune)) (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] system)))))
+a mouse immune system
+Reject
+
+(NP[AGR=[NUM='pl', PER=3]] (Nom[AGR=[NUM='pl', PER=3]] (NNS[AGR=[NUM='pl', PER=3]] Scientists)))
+Scientists
+Accept
+
+
+(TOP[] Scientists restored immunity in mice with a weak immune system .)
+(TOP[] They injected them with a live vaccine .)
+They	(TOP[]
+  (S[]
+    (NP[AGR=[NUM='pl', PER=3]] (Nom[AGR=[NUM='pl', PER=3]] (NNS[AGR=[NUM='pl', PER=3]] Scientists)))
+    (VP[] (VBD[] restored) (NP[AGR=[NUM='sg', PER=3]] (Nom[AGR=[NUM='sg', PER=3]] (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] immunity)) (PP[] (Prep[] in) (NP[AGR=[NUM='pl', PER=3]] (Nom[AGR=[NUM='pl', PER=3]] (NNS[AGR=[NUM='pl', PER=3]] mice)))))) (PP[] (Prep[] with) (NP[AGR=[NUM='sg', PER=3]] (Det[] a) (Nom[AGR=[NUM='sg', PER=3]] (ADJP[] (Adj[] weak)) (Nom[AGR=[NUM='sg', PER=3]] (ADJP[] (Adj[] immune)) (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] system)))))))
+    (PUNC[] .))) (TOP[] (S[] (NP[AGR=[NUM='pl', PER=3]] (PRP[AGR=[NUM='pl', PER=3]] They)) (VP[] (VBD[] injected) (NP[AGR=[NUM='pl', PER=3]] (PRP[AGR=[NUM='pl', PER=3]] them)) (PP[] (Prep[] with) (NP[AGR=[NUM='sg', PER=3]] (Det[] a) (Nom[AGR=[NUM='sg', PER=3]] (ADJP[] (Adj[] live)) (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] vaccine)))))) (PUNC[] .)))
+(NP[AGR=[NUM='sg', PER=3]] (Det[] a) (Nom[AGR=[NUM='sg', PER=3]] (ADJP[] (Adj[] weak)) (Nom[AGR=[NUM='sg', PER=3]] (ADJP[] (Adj[] immune)) (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] system)))))
+a weak immune system
+Reject
+
+(NP[AGR=[NUM='pl', PER=3]] (Nom[AGR=[NUM='pl', PER=3]] (NNS[AGR=[NUM='pl', PER=3]] mice)))
+mice
+Accept
+
+(NP[AGR=[NUM='sg', PER=3]] (Nom[AGR=[NUM='sg', PER=3]] (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] immunity)) (PP[] (Prep[] in) (NP[AGR=[NUM='pl', PER=3]] (Nom[AGR=[NUM='pl', PER=3]] (NNS[AGR=[NUM='pl', PER=3]] mice))))))
+immunity in mice
+Reject
+
+(NP[AGR=[NUM='pl', PER=3]] (Nom[AGR=[NUM='pl', PER=3]] (NNS[AGR=[NUM='pl', PER=3]] Scientists)))
+Scientists
+Accept
+
+them	(TOP[]
+  (S[]
+    (NP[AGR=[NUM='pl', PER=3]] (Nom[AGR=[NUM='pl', PER=3]] (NNS[AGR=[NUM='pl', PER=3]] Scientists)))
+    (VP[] (VBD[] restored) (NP[AGR=[NUM='sg', PER=3]] (Nom[AGR=[NUM='sg', PER=3]] (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] immunity)) (PP[] (Prep[] in) (NP[AGR=[NUM='pl', PER=3]] (Nom[AGR=[NUM='pl', PER=3]] (NNS[AGR=[NUM='pl', PER=3]] mice)))))) (PP[] (Prep[] with) (NP[AGR=[NUM='sg', PER=3]] (Det[] a) (Nom[AGR=[NUM='sg', PER=3]] (ADJP[] (Adj[] weak)) (Nom[AGR=[NUM='sg', PER=3]] (ADJP[] (Adj[] immune)) (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] system)))))))
+    (PUNC[] .))) (TOP[] (S[] (NP[AGR=[NUM='pl', PER=3]] (PRP[AGR=[NUM='pl', PER=3]] They)) (VP[] (VBD[] injected) (NP[AGR=[NUM='pl', PER=3]] (PRP[AGR=[NUM='pl', PER=3]] them)) (PP[] (Prep[] with) (NP[AGR=[NUM='sg', PER=3]] (Det[] a) (Nom[AGR=[NUM='sg', PER=3]] (ADJP[] (Adj[] live)) (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] vaccine)))))) (PUNC[] .)))
+(NP[AGR=[NUM='sg', PER=3]] (Det[] a) (Nom[AGR=[NUM='sg', PER=3]] (ADJP[] (Adj[] weak)) (Nom[AGR=[NUM='sg', PER=3]] (ADJP[] (Adj[] immune)) (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] system)))))
+a weak immune system
+Reject
+
+(NP[AGR=[NUM='pl', PER=3]] (Nom[AGR=[NUM='pl', PER=3]] (NNS[AGR=[NUM='pl', PER=3]] mice)))
+mice
+Accept
+
+(NP[AGR=[NUM='sg', PER=3]] (Nom[AGR=[NUM='sg', PER=3]] (Nom[AGR=[NUM='sg', PER=3]] (NN[AGR=[NUM='sg', PER=3]] immunity)) (PP[] (Prep[] in) (NP[AGR=[NUM='pl', PER=3]] (Nom[AGR=[NUM='pl', PER=3]] (NNS[AGR=[NUM='pl', PER=3]] mice))))))
+immunity in mice
+Reject
+
+(NP[AGR=[NUM='pl', PER=3]] (Nom[AGR=[NUM='pl', PER=3]] (NNS[AGR=[NUM='pl', PER=3]] Scientists)))
+Scientists
+Accept
+
+
