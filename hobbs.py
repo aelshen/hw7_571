@@ -74,31 +74,39 @@ def HobbsAlgorithm(sentence_pair, parser, result_file):
     sentence_1 = parser.nbest_parse(sentence_pair[0], 1)
     sentence_2 = parser.nbest_parse(sentence_pair[1], 1)
     
-    #if a valid parse was found, apply algorithm
+    #if a valid parses found, apply algorithm
     if sentence_1 and sentence_2:
         sentence_1 = nltk.tree.ParentedTree.convert(sentence_1[0])
         sentence_2 = nltk.tree.ParentedTree.convert(sentence_2[0])
         
+        
         candidate_antecedents = []
         case = None
+        
+        #Extract possible antecedents from the first sentence of the pair
         for x in sentence_1.subtrees():
             temp = x.node.__repr__()[:2]
-            if temp == 'NP':
+            
+            if temp == 'S[':
+                candidate_antecedents.append((x,None))
+            elif temp == 'NP':
                 parent = x.parent().node.__repr__()[:2] 
                 
-                #x.node returns the FeatStruct for this subtree
+                #if the parent of this NP is a VP,
+                #then it is likely the object of a verb (ACC case)
                 if parent == 'VP':
                     case= 'ACC'
                
                 candidate_antecedents.append((x,case))
         
-        #find if the second sentence has any pronouns 
+        
         pro = []
         case = None
         
+        #Extract any pronouns from the second sentence
         for x in sentence_2.subtrees():
             temp = x.node.__repr__()[:3]
-            #x.node returns the FeatStruct for this subtree
+            
             if temp[:2] == 'VP':
                 case = 'ACC'
             if temp == ('PRP' or 'Pos'):
@@ -112,6 +120,7 @@ def HobbsAlgorithm(sentence_pair, parser, result_file):
         
         for ref in pro:
             result_file.write(ref[0] + "\t" + s1 + " " + s2 + os.linesep)
+            #for climbing the parse tree of sentence 1 from bottom-up
             for ante in reversed(candidate_antecedents):
                 result_file.write(ante[0].pprint(margin=500) + os.linesep)
                 result_file.write(' '.join(ante[0].leaves()) + os.linesep)
@@ -122,13 +131,14 @@ def HobbsAlgorithm(sentence_pair, parser, result_file):
                 case_ante = ante[1]
                 case_pro = ref[2]
                 
+                #check for AGR agreement between pronoun and antecedent
                 agreement = fs_pro.unify(fs_ante)
                 
                 if agreement:
                     if case_ante == case_pro:
-                        result_file.write("Accept - preferred" + os.linesep)
+                        result_file.write("Acceptable - preferred" + os.linesep)
                     else:
-                        result_file.write("Accept" + os.linesep)
+                        result_file.write("Acceptable" + os.linesep)
                 else:
                     result_file.write("Reject" + os.linesep)
                     
