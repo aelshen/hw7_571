@@ -14,8 +14,6 @@ import nltk
 #--------------------------------Constants-------------------------------------
 #==============================================================================
 DEBUG = True
-#for convenience's sake, a lookup table for pronouns
-PRONOUNS = ['their', 'Their', 'this', 'them', 'They']
 #==============================================================================
 #-----------------------------------Main---------------------------------------
 #==============================================================================
@@ -51,8 +49,6 @@ def main():
         if len(sentence_pair) == 2:
             HobbsAlgorithm(sentence_pair, parser, result_file)
             sentence_pair = []
-
-    
     
     data_file.close()
     result_file.close()
@@ -62,13 +58,16 @@ def main():
 ##-------------------------------------------------------------------------
 ## HobbsAlgorithm()
 ##-------------------------------------------------------------------------
-##    Description:      description
+##    Description:      Performs Hobb's algorithm on a set of sentences,
+##                      finding acceptable antecedents for any pronouns found 
+##                      in the second sentence of every pair passed in.
 ##
-##    Arguments:        arguments
+##    Arguments:        sentence_pair; a pair of lists, where each item is
+##                          a list of tokens for a sentence
+##                      parser; an NLTK build parser
+##                      result_file; the file to output Hobb's results
 ##
-##    Calls:            calls
-##
-##    Returns:          returns
+##    Called by:        main()
 ##-------------------------------------------------------------------------
 def HobbsAlgorithm(sentence_pair, parser, result_file):
     sentence_1 = parser.nbest_parse(sentence_pair[0], 1)
@@ -106,6 +105,8 @@ def HobbsAlgorithm(sentence_pair, parser, result_file):
         #Extract any pronouns from the second sentence
         for x in sentence_2.subtrees():
             temp = x.node.__repr__()[:3]
+            
+            #add to list of candidate antecedents if node is S or NP
             if temp[:2] == 'S[':
                 candidate_antecedents.append((x,case))
             elif temp[:2] == 'NP':
@@ -114,10 +115,11 @@ def HobbsAlgorithm(sentence_pair, parser, result_file):
                     case= 'ACC'
                
                 candidate_antecedents.append((x,case))
-                
-            elif temp[:2] == 'VP':
-                case = 'ACC'
+
             elif temp == ('PRP' or 'Pos'):
+                #if current node is a pronoun (personal pronoun, possessive pronoun)
+                #append to list of pronouns a tuple of
+                #(str:pronoun,FeatStruct:pronoun feature structure, case:ACC or not, candidate_antecedents:list of all possible NP/S nodes that coudl be antecedent)
                 pro.append((str(x.leaves()),x.node,case,candidate_antecedents[:]))
         
         result_file.write(sentence_1.flatten().pprint(margin=500) + os.linesep)
@@ -151,8 +153,6 @@ def HobbsAlgorithm(sentence_pair, parser, result_file):
                 
                 case_ante = ante[1]
                 case_pro = ref[2]
-                
-                
                 
                 if agreement:
                     if case_ante == case_pro:
