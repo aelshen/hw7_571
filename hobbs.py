@@ -88,7 +88,7 @@ def HobbsAlgorithm(sentence_pair, parser, result_file):
             temp = x.node.__repr__()[:2]
             
             if temp == 'S[':
-                candidate_antecedents.append((x,None))
+                candidate_antecedents.append((x,case))
             elif temp == 'NP':
                 parent = x.parent().node.__repr__()[:2] 
                 
@@ -106,11 +106,19 @@ def HobbsAlgorithm(sentence_pair, parser, result_file):
         #Extract any pronouns from the second sentence
         for x in sentence_2.subtrees():
             temp = x.node.__repr__()[:3]
-            
-            if temp[:2] == 'VP':
+            if temp[:2] == 'S[':
+                candidate_antecedents.append((x,case))
+            elif temp[:2] == 'NP':
+                parent = x.parent().node.__repr__()[:2]
+                if parent == 'VP':
+                    case= 'ACC'
+               
+                candidate_antecedents.append((x,case))
+                
+            elif temp[:2] == 'VP':
                 case = 'ACC'
-            if temp == ('PRP' or 'Pos'):
-                pro.append((str(x.leaves()),x.node,case))
+            elif temp == ('PRP' or 'Pos'):
+                pro.append((str(x.leaves()),x.node,case,candidate_antecedents[:]))
         
         result_file.write(sentence_1.flatten().pprint(margin=500) + os.linesep)
         result_file.write(sentence_2.flatten().pprint(margin=500) + os.linesep)
@@ -121,18 +129,30 @@ def HobbsAlgorithm(sentence_pair, parser, result_file):
         for ref in pro:
             result_file.write(ref[0] + "\t" + s1 + " " + s2 + os.linesep)
             #for climbing the parse tree of sentence 1 from bottom-up
-            for ante in reversed(candidate_antecedents):
+            for ante in reversed(ref[3]):
+                #makes sure we aren't checking a pronoun against itself
+                if ref[0] == str(ante[0].leaves()):
+                    continue
+                
                 result_file.write(ante[0].pprint(margin=500) + os.linesep)
                 result_file.write(' '.join(ante[0].leaves()) + os.linesep)
                 
-                fs_ante = ante[0].node["AGR"]
-                fs_pro = ref[1]["AGR"]
+                try:
+                    #try-block is necessary because S nodes (in my grammar)
+                    #have no AGR values
+                    fs_ante = ante[0].node["AGR"]
+                    fs_pro = ref[1]["AGR"]
+                    
+                    #check for AGR agreement between pronoun and antecedent
+                    agreement = fs_pro.unify(fs_ante)
+                except:
+                    agreement = False
+                    pass
                 
                 case_ante = ante[1]
                 case_pro = ref[2]
                 
-                #check for AGR agreement between pronoun and antecedent
-                agreement = fs_pro.unify(fs_ante)
+                
                 
                 if agreement:
                     if case_ante == case_pro:
